@@ -20,6 +20,10 @@ jobs:
         run: aria2c --input-file=filterlist.txt
       - name: Generate ruleset
         run: ./ruleset_converter --input_format=filter-list --output_format=unindexed-ruleset --input_files=$(echo filters/*.txt | tr ' ' ,) --output_file=filters.dat
+      - name: Create tag
+        run: |
+          git tag $(date +%Y%m%d-%H%M%S)
+          git push --tags
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
