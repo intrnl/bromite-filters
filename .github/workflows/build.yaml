@@ -23,8 +23,5 @@ jobs:
       - name: Create release
         uses: softprops/action-gh-release@v1
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          automatic_release_tag: latest
-          prerelease: false
-          title: Filter update
           files: filters.dat
+
