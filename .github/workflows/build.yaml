@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  schedule:
+    - cron: '0 0 */3 * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Download ruleset_converter
+        run: |
+          wget -O ./ruleset_converter https://github.com/bromite/bromite/releases/latest/download/ruleset_converter
+          chmod +x ./ruleset_converter
+      - name: Download filters
+        run: aria2c --input-file=filterlist.txt
+      - name: Generate ruleset
+        run: ./ruleset_converter --input_format=filter-list --output_format=unindexed-ruleset --input_files=$(echo filters/*.txt | tr ' ' ,) --output_file=filters.dat
+      - name: Create release
+        uses: softprops/action-gh-release@v1
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: latest
+          prerelease: false
+          title: Filter update
+          files: filters.dat
