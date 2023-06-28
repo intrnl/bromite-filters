@@ -1,0 +1,34 @@
+# this workflow purposefully prunes the entire Git history as the diff is
+# entirely useless anyway as the generated files are binary. it's also thanks
+# to the checkout action only fetching 1 level deep.
+
+name: Build filters
+
+on:
+  schedule:
+    - cron: '0 0 */3 * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Download ruleset_converter
+        run: |
+          wget -O ./ruleset_converter https://github.com/bromite/bromite/releases/download/108.0.5359.75/ruleset_converter
+          chmod +x ./ruleset_converter
+      - name: Download filters
+        run: aria2c --input-file=filterlist.txt
+      - name: Generate ruleset
+        run: ./ruleset_converter --input_format=filter-list --output_format=unindexed-ruleset --input_files=$(echo filters/*.txt | tr ' ' ,) --output_file=filters.dat
+      - name: Push
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+          git add filters.dat
+          git commit --amend -m "Filter update: $(date --iso-8601=seconds)" --author="github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          git push --force
