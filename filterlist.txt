@@ -1,0 +1,31 @@
+https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt
+	out=filters/ublock-filters.txt
+https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt
+	out=filters/ublock-filters-2020.txt
+https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2021.txt
+	out=filters/ublock-filters-2021.txt
+https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2022.txt
+	out=filters/ublock-filters-2022.txt
+https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2023.txt
+	out=filters/ublock-filters-2023.txt
+https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt
+	out=filters/ublock-privacy.txt
+https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt
+	out=filters/ublock-resourceabuse.txt
+https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt
+	out=filters/ublock-unbreak.txt
+https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/quick-fixes.txt
+	out=filters/ublock-quickfixes.txt
+
+https://ublockorigin.github.io/uAssets/thirdparties/easylist.txt
+	out=filters/easylist.txt
+https://ublockorigin.github.io/uAssets/thirdparties/easyprivacy.txt
+	out=filters/easyprivacy.txt
+https://ublockorigin.github.io/uAssets/thirdparties/easylist-newsletters.txt
+	out=filters/easylist-newsletters.txt
+https://ublockorigin.github.io/uAssets/thirdparties/easylist-notifications.txt
+	out=filters/easylist-notifications.txt
+https://ublockorigin.github.io/uAssets/thirdparties/easylist-cookies.txt
+	out=filters/easylist-cookies.txt
+https://ublockorigin.github.io/uAssets/thirdparties/easylist-social.txt
+	out=filters/easylist-social.txt
